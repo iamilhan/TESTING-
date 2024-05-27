@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attractive Page with Falling Roses</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            overflow: hidden;
+            position: relative;
+        }
+        .background-image {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            height: auto;
+            opacity: 0.5;
+        }
+        .content {
+            font-size: 3rem;
+            color: red;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+        .rose {
+            position: absolute;
+            top: -100px;
+            width: 50px;
+            height: auto;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            font-size: 1rem;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <img src="https://image.shutterstock.com/image-photo/ginger-cat-rose-flower-paw-260nw-2271241891.jpg" alt="Background Image" class="background-image">
+    <div class="content">ki koroooo qt</div>
+    <div class="footer">with love from ILHAN</div>
+    <script>
+        function createRose() {
+            const rose = document.createElement('img');
+            rose.src = 'https://www.pngall.com/wp-content/uploads/2016/05/Rose-Free-Download-PNG.png'; // Example rose image
+            rose.className = 'rose';
+            rose.style.left = Math.random() * 100 + 'vw';
+            rose.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(rose);
+
+            setTimeout(() => {
+                rose.remove();
+            }, 5000); // Adjust time according to animation-duration
+        }
+
+        setInterval(createRose, 300); // Adjust frequency of rose creation
+    </script>
+</body>
+</html>
